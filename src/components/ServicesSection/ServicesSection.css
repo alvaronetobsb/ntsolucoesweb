@@ -1,8 +1,8 @@
 .services-section {
   width: 100%;
   background-color: #f2f2f2;
-  padding: 6rem 2rem 12rem 2rem;
-  /* position: relative; */
+  padding: 6rem 2rem;
+  position: relative;
   z-index: 1;
 }
 
