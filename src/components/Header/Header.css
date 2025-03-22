@@ -1,7 +1,7 @@
 .hero {
   width: 100%;
   min-height: 80vh;
-  background-color: #ffffff;
+  background-color: var(--bg-primary);
   padding-top: calc(66px + 3.5rem); /* altura do nav + padding original */
   padding-bottom: 2rem;
   padding-left: 2rem;
@@ -42,13 +42,13 @@
 .name {
   font-size: 3.5rem;
   font-weight: 700;
-  color: #325a73;
+  color: var(--text-primary);
   margin-bottom: 0.2rem;
 }
 
 .greeting {
   font-size: 1.8rem;
-  color: #325a73;
+  color: var(--text-primary);
   font-weight: 500;
   line-height: 1.2;
 }
@@ -57,15 +57,15 @@
 .hero-description {
   font-family: "Work Sans", sans-serif;
   font-size: 1.1rem;
-  color: #4a5568;
+  color: var(--text-secondary);
   line-height: 1.5;
   margin-bottom: 1.2rem;
   max-width: 90%;
 }
 
 .cta-button {
-  background-color: #325a73;
-  color: white;
+  background-color: var(--primary-blue);
+  color: var(--bg-primary);
   font-family: "Work Sans", sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -79,17 +79,17 @@
 }
 
 .cta-button:hover {
-  background-color: #264560;
+  background-color: var(--secondary-blue);
 }
 
 /* Estilo para os cards de estatísticas com divisórias */
 .stats-container {
   display: flex;
   justify-content: space-between;
-  background-color: #1a93c4;
+  background-color: var(--secondary-blue);
   border-radius: 12px;
   overflow: hidden;
-  color: white;
+  color: var(--bg-primary);
   width: 100%;
   margin-top: 2rem;
   position: relative;
@@ -169,7 +169,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 2.2rem;
-  color: #325a73;
+  color: var(--text-primary);
 }
 
 @media (max-width: 1024px) {

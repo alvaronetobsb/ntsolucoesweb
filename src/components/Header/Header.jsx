@@ -1,7 +1,33 @@
+import { useState, useEffect } from "react";
 import "./Header.css";
-import logoImage from "../../assets/images/nt-logo-1.svg"; // Ajuste o caminho conforme necessário
+import logoLight from "../../assets/images/nt-logo-1.svg";
+import logoDark from "../../assets/images/nt-logo-2.svg";
 
 const Header = () => {
+  const [isDark, setIsDark] = useState(() => {
+    const theme = localStorage.getItem("theme");
+    return theme === "dark";
+  });
+
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "data-theme") {
+          setIsDark(
+            document.documentElement.getAttribute("data-theme") === "dark"
+          );
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="hero" id="home">
       <div className="hero-container">
@@ -40,7 +66,10 @@ const Header = () => {
 
           <div className="hero-image-container">
             <div className="hero-image">
-              <img src={logoImage} alt="logo da NT Soluções Web" />
+              <img
+                src={isDark ? logoDark : logoLight}
+                alt="logo da NT Soluções Web"
+              />
             </div>
             <div className="hero-image-caption">
               <span>NT Soluções Web</span>
