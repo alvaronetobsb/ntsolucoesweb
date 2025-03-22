@@ -5,7 +5,7 @@ import logoFooter from "../../assets/images/nt-logo-1.svg";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" id="contato">
       <div className="footer-top">
         <div className="footer-content">
           <div className="footer-left">

@@ -34,7 +34,7 @@ const Workflow = () => {
   ];
 
   return (
-    <section className="workflow-section">
+    <section className="workflow-section" id="workflow">
       <div className="workflow-container">
         <div className="workflow-content">
           <div className="workflow-description">

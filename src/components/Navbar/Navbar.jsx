@@ -5,14 +5,66 @@ import logo from "../../assets/images/nt-logo-1.svg"; // Ajuste conforme necess�
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const handleClick = (e, targetId) => {
+    e.preventDefault();
+    const element = document.querySelector(targetId);
+    if (element) {
+      const navHeight = document.querySelector(".nav").offsetHeight;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+    setMenuOpen(false);
+  };
+
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
+    <nav className="nav">
+      <div>
         <div className="logo-container">
           <img src={logo} alt="NT Soluções Web" className="logo" />
-          <div className="logo-text">
-            <span className="logo-title">NT Soluções Web</span>
-          </div>
+          <span className="logo-title">NT Soluções Web</span>
+        </div>
+
+        <div className={`nav-menu ${menuOpen ? "active" : ""}`}>
+          <a
+            href="#home"
+            className="nav-menu-item"
+            onClick={(e) => handleClick(e, "#home")}
+          >
+            Home
+          </a>
+          <a
+            href="#sobre"
+            className="nav-menu-item"
+            onClick={(e) => handleClick(e, "#sobre")}
+          >
+            Sobre
+          </a>
+          <a
+            href="#workflow"
+            className="nav-menu-item"
+            onClick={(e) => handleClick(e, "#workflow")}
+          >
+            Workflow
+          </a>
+          <a
+            href="#servicos"
+            className="nav-menu-item"
+            onClick={(e) => handleClick(e, "#servicos")}
+          >
+            Serviços
+          </a>
+          <a
+            href="#contato"
+            className="nav-menu-item"
+            onClick={(e) => handleClick(e, "#contato")}
+          >
+            Contato
+          </a>
         </div>
 
         <div
@@ -23,29 +75,6 @@ const Navbar = () => {
           <span></span>
           <span></span>
         </div>
-
-        <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
-          <li>
-            <a href="#home" className="active">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#sobre">Sobre</a>
-          </li>
-          <li>
-            <a href="#projetos">Projetos</a>
-          </li>
-          <li>
-            <a href="#servicos">Serviços</a>
-          </li>
-          <li>
-            <a href="#contato">Contato</a>
-          </li>
-          <li className="theme-toggle">
-            <button aria-label="Alternar tema">🌓</button>
-          </li>
-        </ul>
       </div>
     </nav>
   );

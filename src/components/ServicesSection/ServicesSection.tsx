@@ -67,7 +67,7 @@ const ServicesSection: React.FC = () => {
   ];
 
   return (
-    <section className="services-section">
+    <section className="services-section" id="servicos">
       <div className="services-container">
         <div className="services-header">
           <h2>Nossos Serviços</h2>
