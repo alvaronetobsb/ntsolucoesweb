@@ -1,6 +1,6 @@
 .tech-slider {
   width: 100%;
-  background-color: #f8f9fa;
+  background-color: var(--bg-secondary);
   padding: 10px 0;
   overflow: visible;
 }
@@ -22,14 +22,14 @@
   font-family: "Work Sans", sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #325a73;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .tech-slider-line {
   width: 60px;
   height: 3px;
-  background-color: #325a73;
+  background-color: var(--primary-blue);
   border-radius: 2px;
 }
 
@@ -62,7 +62,7 @@
 .tech-item img {
   height: 60px;
   width: auto;
-  filter: grayscale(60%);
+  filter: grayscale(60%) brightness(var(--tech-logo-brightness));
   transition: all 0.3s ease;
   display: block !important;
   visibility: visible !important;
@@ -72,7 +72,7 @@
 }
 
 .tech-item img:hover {
-  filter: grayscale(0%);
+  filter: none;
   transform: scale(1.1);
 }
 
@@ -96,8 +96,8 @@
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background-color: var(--bg-primary);
+  box-shadow: 0 4px 10px var(--shadow-color);
   border-radius: 8px;
   padding: 12px 15px;
   width: 220px;
@@ -110,11 +110,12 @@
   visibility: visible !important;
   white-space: normal;
   overflow: visible;
+  border: 1px solid var(--border-color);
 }
 
 .tech-tooltip h4 {
   margin: 0 0 5px;
-  color: #325a73;
+  color: var(--text-primary);
   font-family: "Work Sans", sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -126,7 +127,7 @@
 .tech-tooltip p {
   margin: 0;
   font-size: 0.85rem;
-  color: #555;
+  color: var(--text-secondary);
   line-height: 1.4;
   display: block !important;
   visibility: visible !important;
@@ -141,7 +142,7 @@
   transform: translateX(-50%);
   border-width: 8px;
   border-style: solid;
-  border-color: #fff transparent transparent transparent;
+  border-color: var(--bg-primary) transparent transparent transparent;
   display: block;
   visibility: visible;
 }
@@ -199,7 +200,7 @@
 }
 
 .tech-tooltip-title {
-  color: #325a73 !important;
+  color: var(--text-primary) !important;
   visibility: visible !important;
   display: block !important;
   opacity: 1 !important;
@@ -208,7 +209,7 @@
 }
 
 .tech-tooltip-text {
-  color: #555 !important;
+  color: var(--text-secondary) !important;
   visibility: visible !important;
   display: block !important;
   opacity: 1 !important;

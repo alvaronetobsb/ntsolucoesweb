@@ -7,6 +7,10 @@
   --primary-blue: #325a73;
   --secondary-blue: #1a93c4;
   --tertiary-blue: #2daae1;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --border-color: #eaeaea;
+  --hover-bg: #f0f4fa;
+  --tech-logo-brightness: 1;
 }
 
 [data-theme="dark"] {
@@ -17,6 +21,10 @@
   --primary-blue: #3a5583; /* Secundário: Azul médio */
   --secondary-blue: #4a8dd3; /* Destaque */
   --tertiary-blue: #64b1e8; /* Acento */
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --border-color: #2d3c56;
+  --hover-bg: #243454;
+  --tech-logo-brightness: 2;
 }
 
 * {
