@@ -220,6 +220,7 @@
   overflow: hidden;
 }
 
+.nav-menu-item.active,
 .nav-menu-item:hover {
   display: flex;
   padding: 9.019px 18.037px;
@@ -232,6 +233,11 @@
   transform: translateY(-2px);
 }
 
+.nav-menu-item.active::after,
+.nav-menu-item:hover::after {
+  width: 100%;
+}
+
 .nav-menu-item::after {
   content: "";
   position: absolute;
@@ -242,10 +248,6 @@
   background-color: #2daae1;
   transition: all 0.3s ease-in-out;
   transform: translateX(-50%);
-}
-
-.nav-menu-item:hover::after {
-  width: 100%;
 }
 
 .menu-toggle {
@@ -319,9 +321,11 @@
     text-align: center;
   }
 
+  .nav-menu-item.active,
   .nav-menu-item:hover {
     transform: none;
     background-color: #f8f9fa;
+    color: #2daae1;
   }
 }
 
