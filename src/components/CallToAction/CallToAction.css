@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  background: var(--Primary-Blue, #325a73);
+  background: var(--primary-blue);
 }
 
 .cta-container {
@@ -21,7 +21,7 @@
 }
 
 .cta-container h2 {
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   font-family: "Work Sans", sans-serif;
   font-size: 36px;
@@ -31,7 +31,7 @@
 }
 
 .cta-container p {
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   font-family: "Work Sans", sans-serif;
   font-size: 16px;
@@ -48,8 +48,8 @@
   align-items: center;
   gap: 8px;
   border-radius: 4px;
-  background: #fff;
-  color: #325a73;
+  background: #ffffff;
+  color: var(--primary-blue);
   font-family: "Work Sans", sans-serif;
   font-size: 16px;
   font-weight: 500;
