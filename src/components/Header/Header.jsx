@@ -18,7 +18,7 @@ const Header = () => {
               dashboards em Power BI para impulsionar negócios com tecnologia e
               eficiência.
             </p>
-            <button className="cta-button">Saiba mais!</button>
+            {/* <button className="cta-button">Saiba mais!</button> */}
 
             <div className="stats-container">
               <div className="stat-item">
