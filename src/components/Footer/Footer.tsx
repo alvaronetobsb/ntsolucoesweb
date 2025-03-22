@@ -202,7 +202,7 @@ const Footer: React.FC = () => {
           </nav>
 
           <div className="footer-copyright">
-            <span>Copyright © 2024.</span>
+            <span>Copyright © 2025.</span>
           </div>
         </div>
       </div>
