@@ -12,4 +12,5 @@ Figma a ser seguido: https://www.figma.com/design/juRPRg4RXeJwAxp28zUFd0/Portfol
 - Ir devagar, passo a passo
 - Só alterar ou criar ou excluir o que for pedido. Não mexer nas funcionalidades, nos estilos ou em nada que já esteja implementado e que não foi solicitado mudança.
 
-Seguir as regras de cores do [style-rule.mdc](mdc:.cursor/rules/style-rule.mdc)
+# Cores do tema escuro
+[dark-theme.md](mdc:.cursor/rules/Documentation/dark-theme.md)

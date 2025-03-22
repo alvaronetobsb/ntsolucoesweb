@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
 import "./Navbar.css";
-import logo from "../../assets/images/nt-logo-1.svg";
+import logoLight from "../../assets/images/nt-logo-1.svg";
+import logoDark from "../../assets/images/nt-logo-2.svg";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isDark, setIsDark] = useState(() => {
+    const theme = localStorage.getItem("theme");
+    return theme === "dark";
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +40,25 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "data-theme") {
+          setIsDark(
+            document.documentElement.getAttribute("data-theme") === "dark"
+          );
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleClick = (e, targetId) => {
     e.preventDefault();
     const element = document.querySelector(targetId);
@@ -54,7 +79,11 @@ const Navbar = () => {
     <nav className="nav">
       <div>
         <div className="logo-container">
-          <img src={logo} alt="NT Soluções Web" className="logo" />
+          <img
+            src={isDark ? logoDark : logoLight}
+            alt="NT Soluções Web"
+            className="logo"
+          />
           <span className="logo-title">NT Soluções Web</span>
         </div>
 
@@ -104,6 +133,7 @@ const Navbar = () => {
           >
             Contato
           </a>
+          <ThemeToggle />
         </div>
 
         <div

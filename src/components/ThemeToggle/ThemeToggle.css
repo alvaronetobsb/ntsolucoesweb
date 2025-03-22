@@ -1,0 +1,26 @@
+.theme-toggle-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--secondary-blue);
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-family: "Work Sans", sans-serif;
+  font-size: 14px;
+  border-radius: 9999px;
+  margin-left: 8px;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.05);
+  background: var(--tertiary-blue);
+  color: var(--bg-primary);
+}
+
+.theme-toggle-btn span {
+  font-weight: 500;
+}

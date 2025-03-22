@@ -1,3 +1,24 @@
+:root {
+  /* Tema Claro (padrão) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --primary-blue: #325a73;
+  --secondary-blue: #1a93c4;
+  --tertiary-blue: #2daae1;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0e1729; /* Principal: Azul marinho profundo */
+  --bg-secondary: #1b2a43; /* Superfícies secundárias */
+  --text-primary: #f0f0f0; /* Texto: Branco suave */
+  --text-secondary: #e5e7eb; /* Texto secundário */
+  --primary-blue: #3a5583; /* Secundário: Azul médio */
+  --secondary-blue: #4a8dd3; /* Destaque */
+  --tertiary-blue: #64b1e8; /* Acento */
+}
+
 * {
   margin: 0;
   padding: 0;
