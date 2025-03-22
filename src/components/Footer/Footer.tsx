@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="info-content">
                   <span className="info-label">Email:</span>
-                  <span className="info-text">contato@alvaroneto.com</span>
+                  <span className="info-text">contato@ntsolucoesweb.com</span>
                 </div>
               </div>
 
@@ -105,6 +105,24 @@ const Footer: React.FC = () => {
               </div>
               <div className="form-group">
                 <input type="email" placeholder="Email*" required />
+              </div>
+              <div className="form-group">
+                <input
+                  type="tel"
+                  placeholder="Telefone*"
+                  required
+                  pattern="[0-9]{10,11}"
+                />
+              </div>
+              <div className="form-group">
+                <select required>
+                  <option value="">Selecione o serviço*</option>
+                  <option value="site-pessoal">Site Pessoal</option>
+                  <option value="landing-page">Landing Page</option>
+                  <option value="e-commerce">e-Commerce</option>
+                  <option value="sistema-web">Sistema Web</option>
+                  <option value="dashboard-powerbi">Dashboard Power BI</option>
+                </select>
               </div>
               <div className="form-group">
                 <textarea placeholder="Mensagem*" required></textarea>

@@ -2,7 +2,10 @@
   width: 100%;
   min-height: 80vh;
   background-color: #ffffff;
-  padding: 3.5rem 2rem 0;
+  padding-top: calc(66px + 3.5rem); /* altura do nav + padding original */
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   display: flex;
   align-items: center;
   overflow-x: hidden;

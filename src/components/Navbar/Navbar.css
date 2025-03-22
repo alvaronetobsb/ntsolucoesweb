@@ -168,14 +168,17 @@
 }
 
 .nav {
-  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   padding: 15.031px 0;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   background: var(--Gray-White, #fff);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  position: relative;
+  z-index: 1000;
+  display: flex;
 }
 
 .nav > div {
@@ -199,7 +202,7 @@
 
 .nav-menu {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .nav-menu-item {
@@ -245,6 +248,34 @@
   width: 100%;
 }
 
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #1a93c4;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
 /* Responsividade */
 @media (max-width: 1440px) {
   .nav > div {
@@ -258,9 +289,13 @@
     padding: 0 40px;
   }
 
+  .menu-toggle {
+    display: flex;
+  }
+
   .nav-menu {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 66px; /* altura do nav + padding */
     left: 0;
     right: 0;
     flex-direction: column;
@@ -279,12 +314,14 @@
     transform: translateY(0);
   }
 
-  .nav-menu-item:hover {
-    transform: translateX(10px);
+  .nav-menu-item {
+    width: 100%;
+    text-align: center;
   }
 
-  .menu-toggle {
-    display: flex;
+  .nav-menu-item:hover {
+    transform: none;
+    background-color: #f8f9fa;
   }
 }
 
