@@ -13,7 +13,7 @@ function App() {
       <Navbar />
       <Header />
       <About />
-      {/* <TechSlider /> */}
+      <TechSlider />
       <Workflow />
       <CallToAction />
       <ServicesSection />

@@ -1,6 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import "./TechSlider.css";
 
+// Importando as imagens
+import reactLogo from "../../assets/images/logo/React.png";
+import reactNativeLogo from "../../assets/images/logo/ReactNative.png";
+import wordPressLogo from "../../assets/images/logo/WordPress.png";
+import phpLogo from "../../assets/images/logo/php 2.png";
+import powerBiLogo from "../../assets/images/logo/Power BI logo.png";
+import sqlLogo from "../../assets/images/logo/SQL.png";
+import pythonLogo from "../../assets/images/logo/Python logo.png";
+import javascriptLogo from "../../assets/images/logo/JavaScript-logo.png";
+import cssLogo from "../../assets/images/logo/CSS Logo.png";
+import htmlLogo from "../../assets/images/logo/html.png";
+
 const TechSlider = () => {
   const sliderRef = useRef(null);
   const [activeTooltip, setActiveTooltip] = useState(null);
@@ -44,61 +56,61 @@ const TechSlider = () => {
   const technologies = [
     {
       name: "React",
-      logo: "/assets/images/logo/React.png",
+      logo: reactLogo,
       description:
         "Biblioteca para construção de interfaces de usuário com componentes reutilizáveis.",
     },
     {
       name: "ReactNative",
-      logo: "/assets/images/logo/ReactNative.png",
+      logo: reactNativeLogo,
       description:
         "Framework para desenvolvimento de aplicativos móveis nativos usando React.",
     },
     {
       name: "WordPress",
-      logo: "/assets/images/logo/WordPress.png",
+      logo: wordPressLogo,
       description:
         "Sistema de gerenciamento de conteúdo para criação de sites e blogs.",
     },
     {
       name: "PHP",
-      logo: "/assets/images/logo/php 2.png",
+      logo: phpLogo,
       description:
         "Linguagem de script voltada para desenvolvimento web do lado do servidor.",
     },
     {
       name: "PowerBI",
-      logo: "/assets/images/logo/Power BI logo.png",
+      logo: powerBiLogo,
       description:
         "Ferramenta de análise de negócios para visualização interativa de dados.",
     },
     {
       name: "SQL",
-      logo: "/assets/images/logo/SQL.png",
+      logo: sqlLogo,
       description:
         "Linguagem para manipulação e consulta de bancos de dados relacionais.",
     },
     {
       name: "Python",
-      logo: "/assets/images/logo/Python logo.png",
+      logo: pythonLogo,
       description:
         "Linguagem de programação de alto nível, interpretada e de propósito geral.",
     },
     {
       name: "JavaScript",
-      logo: "/assets/images/logo/JavaScript-logo.png",
+      logo: javascriptLogo,
       description:
         "Linguagem de programação que permite a criação de conteúdo dinâmico em páginas web.",
     },
     {
       name: "CSS",
-      logo: "/assets/images/logo/CSS Logo.png",
+      logo: cssLogo,
       description:
         "Linguagem de estilo para definir a apresentação de documentos HTML.",
     },
     {
       name: "HTML",
-      logo: "/assets/images/logo/html.png",
+      logo: htmlLogo,
       description:
         "Linguagem de marcação para estruturação de conteúdo na web.",
     },

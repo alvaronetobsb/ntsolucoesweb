@@ -64,6 +64,11 @@
   width: auto;
   filter: grayscale(60%);
   transition: all 0.3s ease;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  object-fit: contain;
+  max-width: none;
 }
 
 .tech-item img:hover {
