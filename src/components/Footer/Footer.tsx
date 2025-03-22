@@ -4,6 +4,25 @@ import { Facebook, Twitter, Instagram, Linkedin, Send } from "lucide-react";
 import logoFooter from "../../assets/images/nt-logo-1.svg";
 
 const Footer: React.FC = () => {
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    e.preventDefault();
+    const element = document.querySelector(targetId);
+    const nav = document.querySelector(".nav");
+    if (element && nav) {
+      const navHeight = nav.getBoundingClientRect().height;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <footer className="footer" id="contato">
       <div className="footer-top">
@@ -149,22 +168,35 @@ const Footer: React.FC = () => {
           <nav className="footer-nav">
             <ul>
               <li>
-                <a href="#">Home</a>
+                <a href="#home" onClick={(e) => handleScroll(e, "#home")}>
+                  Home
+                </a>
               </li>
               <li>
-                <a href="#sobre">Sobre</a>
+                <a href="#sobre" onClick={(e) => handleScroll(e, "#sobre")}>
+                  Sobre
+                </a>
               </li>
               <li>
-                <a href="#projetos">Projetos</a>
+                <a
+                  href="#workflow"
+                  onClick={(e) => handleScroll(e, "#workflow")}
+                >
+                  Workflow
+                </a>
               </li>
               <li>
-                <a href="#testimonhos">Testemunhos</a>
+                <a
+                  href="#servicos"
+                  onClick={(e) => handleScroll(e, "#servicos")}
+                >
+                  Serviços
+                </a>
               </li>
               <li>
-                <a href="#parceiros">Parceiros</a>
-              </li>
-              <li>
-                <a href="#contato">Contato</a>
+                <a href="#contato" onClick={(e) => handleScroll(e, "#contato")}>
+                  Contato
+                </a>
               </li>
             </ul>
           </nav>
