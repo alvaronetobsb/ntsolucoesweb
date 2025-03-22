@@ -53,13 +53,13 @@ const Header = () => {
               </div>
 
               <div className="stat-item">
-                <h2 className="stat-number">56+</h2>
-                <p className="stat-description">Projetos Finalizados</p>
+                <h2 className="stat-number">100%</h2>
+                <p className="stat-description">Comprometimento com Cliente</p>
               </div>
 
               <div className="stat-item">
-                <h2 className="stat-number">38</h2>
-                <p className="stat-description">Clientes Parceiros</p>
+                <h2 className="stat-number">10+</h2>
+                <p className="stat-description">Anos de Formação Contínua</p>
               </div>
             </div>
           </div>

@@ -273,6 +273,7 @@ const Footer: React.FC = () => {
               </div>
             </div>
 
+            {/* Social Icons 
             <div className="social-icons">
               <a href="#" className="social-icon">
                 <Facebook size={20} />
@@ -287,6 +288,7 @@ const Footer: React.FC = () => {
                 <Linkedin size={20} />
               </a>
             </div>
+            */}
           </div>
 
           <div className="footer-right">
