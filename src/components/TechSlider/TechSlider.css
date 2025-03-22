@@ -1,0 +1,212 @@
+.tech-slider {
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  overflow: visible;
+}
+
+.tech-slider-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.tech-slider-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.tech-slider-title h3 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #325a73;
+  margin-bottom: 0.5rem;
+}
+
+.tech-slider-line {
+  width: 60px;
+  height: 3px;
+  background-color: #325a73;
+  border-radius: 2px;
+}
+
+.tech-slider-wrapper {
+  width: 100%;
+  overflow: visible;
+  position: relative;
+  padding: 10px 0;
+}
+
+.tech-slider-track {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  animation: scroll 25s linear infinite;
+  overflow: visible;
+}
+
+.tech-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  position: relative;
+  height: 100px;
+  overflow: visible;
+  z-index: 10;
+}
+
+.tech-item img {
+  height: 60px;
+  width: auto;
+  filter: grayscale(60%);
+  transition: all 0.3s ease;
+}
+
+.tech-item img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pausa a animação ao passar o mouse */
+.tech-slider-wrapper:hover .tech-slider-track {
+  animation-play-state: paused;
+}
+
+/* Tooltip styling */
+.tech-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 12px 15px;
+  width: 220px;
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: none;
+  margin-bottom: 10px;
+  animation: tooltipFadeIn 0.2s ease-out;
+  display: block !important;
+  visibility: visible !important;
+  white-space: normal;
+  overflow: visible;
+}
+
+.tech-tooltip h4 {
+  margin: 0 0 5px;
+  color: #325a73;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  display: block !important;
+  visibility: visible !important;
+  text-shadow: none;
+}
+
+.tech-tooltip p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.4;
+  display: block !important;
+  visibility: visible !important;
+  text-shadow: none;
+}
+
+.tech-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+  display: block;
+  visibility: visible;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .tech-slider {
+    padding: 0;
+  }
+
+  .tech-slider-title h3 {
+    font-size: 1.5rem;
+  }
+
+  .tech-item {
+    padding: 0 1.5rem;
+    height: 80px;
+  }
+
+  .tech-item img {
+    height: 40px;
+  }
+
+  .tech-tooltip {
+    width: 180px;
+    padding: 8px 12px;
+  }
+
+  .tech-tooltip h4 {
+    font-size: 0.9rem;
+  }
+
+  .tech-tooltip p {
+    font-size: 0.75rem;
+  }
+}
+
+.tech-tooltip-visible {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 9999 !important;
+  color: initial !important;
+}
+
+.tech-tooltip-title {
+  color: #325a73 !important;
+  visibility: visible !important;
+  display: block !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+  position: static !important;
+}
+
+.tech-tooltip-text {
+  color: #555 !important;
+  visibility: visible !important;
+  display: block !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+  position: static !important;
+}

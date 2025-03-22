@@ -1,0 +1,247 @@
+.hero {
+  width: 100%;
+  min-height: 80vh;
+  background-color: #ffffff;
+  padding: 3.5rem 2rem 0;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-text h1 {
+  display: flex;
+  flex-direction: column;
+  font-family: "Work Sans", sans-serif;
+  margin-bottom: 1rem;
+}
+
+.name {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #325a73;
+  margin-bottom: 0.2rem;
+}
+
+.greeting {
+  font-size: 1.8rem;
+  color: #325a73;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Estilo para o parágrafo adicionado */
+.hero-description {
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+  max-width: 90%;
+}
+
+.cta-button {
+  background-color: #325a73;
+  color: white;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+  margin-bottom: 4rem;
+}
+
+.cta-button:hover {
+  background-color: #264560;
+}
+
+/* Estilo para os cards de estatísticas com divisórias */
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1a93c4;
+  border-radius: 12px;
+  overflow: hidden;
+  color: white;
+  width: 100%;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.stat-item {
+  flex: 1;
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+/* Adiciona divisórias entre os cards */
+.stat-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20%; /* Começa a 20% do topo */
+  height: 60%; /* Altura de 60% do elemento pai */
+  width: 1px; /* Largura da divisória */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Cor branca com transparência sutil */
+}
+
+.stat-number {
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  line-height: 1;
+  display: block;
+}
+
+.stat-description {
+  font-family: "Work Sans", sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.2;
+  display: block;
+}
+
+/* Container para a imagem e texto abaixo */
+.hero-image-container {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1rem;
+}
+
+.hero-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 2rem; */
+}
+
+.hero-image img {
+  width: 250px;
+  height: auto;
+  /* Removido o fundo branco e a sombra */
+}
+
+/* Estilo para o texto abaixo da imagem */
+.hero-image-caption {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.hero-image-caption span {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #325a73;
+}
+
+@media (max-width: 1024px) {
+  .name {
+    font-size: 3rem;
+  }
+
+  .greeting {
+    font-size: 1.5rem;
+  }
+
+  .hero-image-container {
+    padding-top: 1rem;
+  }
+
+  .hero-text,
+  .hero-image-container {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 1rem 0;
+  }
+
+  .hero-content {
+    flex-direction: column;
+  }
+
+  .hero-text {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-button {
+    align-self: center;
+    margin-bottom: 2rem;
+  }
+
+  .hero-image-container {
+    width: 100%;
+  }
+
+  .hero-image img {
+    width: 200px;
+  }
+
+  .hero-image-caption span {
+    font-size: 1.8rem;
+  }
+
+  .stats-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .stat-item {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8); /* Divisória horizontal para mobile */
+  }
+
+  .stat-item:last-child {
+    border-bottom: none; /* Remove a borda do último item no mobile */
+  }
+
+  .stat-item::after {
+    display: none; /* Remove as divisórias verticais no mobile */
+  }
+}

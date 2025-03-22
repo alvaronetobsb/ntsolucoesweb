@@ -1,0 +1,27 @@
+.logo-marca {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-marca img {
+  height: 100%;
+}
+
+.logo-texto {
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+}
+
+.nt {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+}
+
+.solucoes-web {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}

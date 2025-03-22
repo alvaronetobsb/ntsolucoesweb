@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+- Fonte a ser usada:
+  - Todo o site: Work Sans
+  - NT Soluções Web: Inter
+
+- [NT-logo-tema-claro.pdf](mdc:.cursor/rules/Documentation/NT-logo-tema-claro.pdf)
+- [NT-logo-tema-escuro.pdf](mdc:.cursor/rules/Documentation/NT-logo-tema-escuro.pdf)
+- Nesses dois arquivos temos todas as regras de cores para os temas claro e escuro.

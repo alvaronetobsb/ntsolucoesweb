@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+Figma a ser seguido: https://www.figma.com/design/juRPRg4RXeJwAxp28zUFd0/Portfolio-NT?node-id=2110-336&m=dev
+
+- Não sair criando nada antes de confirmar comigo o que é para ser criado.
+- Ir devagar, passo a passo
+- Só alterar ou criar ou excluir o que for pedido. Não mexer nas funcionalidades, nos estilos ou em nada que já esteja implementado e que não foi solicitado mudança.
+
+Seguir as regras de cores do [style-rule.mdc](mdc:.cursor/rules/style-rule.mdc)
