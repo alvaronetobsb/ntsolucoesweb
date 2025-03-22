@@ -1,9 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 import { Facebook, Twitter, Instagram, Linkedin, Send } from "lucide-react";
 import logoFooter from "../../assets/images/nt-logo-1.svg";
 
 const Footer: React.FC = () => {
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    telefone: "",
+    servico: "",
+    mensagem: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState<{ type: string; text: string }>({
+    type: "",
+    text: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage({ type: "", text: "" });
+
+    try {
+      const apiUrl = import.meta.env.PROD
+        ? "https://www.ntsolucoesweb.com/api/send-mail.php"
+        : "/api/send-mail.php";
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage({ type: "success", text: "Mensagem enviada com sucesso!" });
+        setFormData({
+          nome: "",
+          email: "",
+          telefone: "",
+          servico: "",
+          mensagem: "",
+        });
+      } else {
+        throw new Error(data.error || "Erro ao enviar mensagem");
+      }
+    } catch (error) {
+      setMessage({
+        type: "error",
+        text:
+          error instanceof Error ? error.message : "Erro ao enviar mensagem",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     targetId: string
@@ -118,23 +187,45 @@ const Footer: React.FC = () => {
               problema.
             </p>
 
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <input type="text" placeholder="Nome*" required />
+                <input
+                  type="text"
+                  name="nome"
+                  placeholder="Nome*"
+                  value={formData.nome}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="form-group">
-                <input type="email" placeholder="Email*" required />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email*"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="form-group">
                 <input
                   type="tel"
+                  name="telefone"
                   placeholder="Telefone*"
+                  value={formData.telefone}
+                  onChange={handleChange}
                   required
                   pattern="[0-9]{10,11}"
                 />
               </div>
               <div className="form-group">
-                <select required>
+                <select
+                  name="servico"
+                  value={formData.servico}
+                  onChange={handleChange}
+                  required
+                >
                   <option value="">Selecione o serviço*</option>
                   <option value="site-pessoal">Site Pessoal</option>
                   <option value="landing-page">Landing Page</option>
@@ -144,10 +235,23 @@ const Footer: React.FC = () => {
                 </select>
               </div>
               <div className="form-group">
-                <textarea placeholder="Mensagem*" required></textarea>
+                <textarea
+                  name="mensagem"
+                  placeholder="Mensagem*"
+                  value={formData.mensagem}
+                  onChange={handleChange}
+                  required
+                ></textarea>
               </div>
-              <button type="submit" className="submit-button">
-                Enviar <Send size={18} />
+              {message.text && (
+                <div className={`message ${message.type}`}>{message.text}</div>
+              )}
+              <button
+                type="submit"
+                className="submit-button"
+                disabled={loading}
+              >
+                {loading ? "Enviando..." : "Enviar"} <Send size={18} />
               </button>
             </form>
           </div>
@@ -202,7 +306,7 @@ const Footer: React.FC = () => {
           </nav>
 
           <div className="footer-copyright">
-            <span>Copyright © 2025.</span>
+            <span>Copyright © {new Date().getFullYear()}.</span>
           </div>
         </div>
       </div>
