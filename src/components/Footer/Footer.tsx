@@ -3,6 +3,14 @@ import "./Footer.css";
 import { Facebook, Twitter, Instagram, Linkedin, Send } from "lucide-react";
 import logoFooter from "../../assets/images/nt-logo-1.svg";
 
+interface FormErrors {
+  nome?: string;
+  email?: string;
+  telefone?: string;
+  servico?: string;
+  mensagem?: string;
+}
+
 const Footer: React.FC = () => {
   const [formData, setFormData] = useState({
     nome: "",
@@ -18,20 +26,120 @@ const Footer: React.FC = () => {
     text: "",
   });
 
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const validateEmail = (email: string): boolean => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
+  const validateForm = () => {
+    const newErrors: FormErrors = {};
+    let formIsValid = true;
+
+    // Validação do nome
+    if (!formData.nome.trim()) {
+      newErrors.nome = "Nome é obrigatório";
+      formIsValid = false;
+    } else if (formData.nome.trim().length < 3) {
+      newErrors.nome = "Nome deve ter pelo menos 3 caracteres";
+      formIsValid = false;
+    }
+
+    // Validação do email
+    if (!formData.email.trim()) {
+      newErrors.email = "Email é obrigatório";
+      formIsValid = false;
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = "Formato de email inválido";
+      formIsValid = false;
+    }
+
+    // Validação do telefone
+    if (!formData.telefone) {
+      newErrors.telefone = "Telefone é obrigatório";
+      formIsValid = false;
+    } else if (formData.telefone.replace(/\D/g, "").length < 10) {
+      newErrors.telefone = "Telefone inválido";
+      formIsValid = false;
+    }
+
+    // Validação do serviço
+    if (!formData.servico) {
+      newErrors.servico = "Selecione um serviço";
+      formIsValid = false;
+    }
+
+    // Validação da mensagem
+    if (!formData.mensagem.trim()) {
+      newErrors.mensagem = "Mensagem é obrigatória";
+      formIsValid = false;
+    } else if (formData.mensagem.trim().length < 10) {
+      newErrors.mensagem = "Mensagem deve ter pelo menos 10 caracteres";
+      formIsValid = false;
+    }
+
+    setErrors(newErrors);
+    return formIsValid;
+  };
+
+  // Função para formatar telefone como (99) 99999-9999
+  const formatPhone = (value: string): string => {
+    if (!value) return "";
+
+    // Remove tudo que não for número
+    const numbers = value.replace(/\D/g, "");
+
+    // Limita a 11 dígitos
+    const phoneNumber = numbers.slice(0, 11);
+
+    // Formata o número
+    if (phoneNumber.length <= 2) {
+      return `(${phoneNumber}`;
+    } else if (phoneNumber.length <= 7) {
+      return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2)}`;
+    } else {
+      return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(
+        2,
+        7
+      )}-${phoneNumber.slice(7)}`;
+    }
+  };
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    // Para o telefone, aplicamos a formatação
+    if (name === "telefone") {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: formatPhone(value),
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+
+    // Limpar erro quando o campo for alterado
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validar formulário antes de enviar
+    if (!validateForm()) {
+      return;
+    }
+
     setLoading(true);
     setMessage({ type: "", text: "" });
 
@@ -59,6 +167,7 @@ const Footer: React.FC = () => {
           servico: "",
           mensagem: "",
         });
+        setErrors({});
       } else {
         throw new Error(data.error || "Erro ao enviar mensagem");
       }
@@ -187,7 +296,7 @@ const Footer: React.FC = () => {
               problema.
             </p>
 
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
               <div className="form-group">
                 <input
                   type="text"
@@ -195,8 +304,11 @@ const Footer: React.FC = () => {
                   placeholder="Nome*"
                   value={formData.nome}
                   onChange={handleChange}
-                  required
+                  className={errors.nome ? "error" : ""}
                 />
+                {errors.nome && (
+                  <span className="error-message">{errors.nome}</span>
+                )}
               </div>
               <div className="form-group">
                 <input
@@ -205,26 +317,32 @@ const Footer: React.FC = () => {
                   placeholder="Email*"
                   value={formData.email}
                   onChange={handleChange}
-                  required
+                  className={errors.email ? "error" : ""}
                 />
+                {errors.email && (
+                  <span className="error-message">{errors.email}</span>
+                )}
               </div>
               <div className="form-group">
                 <input
                   type="tel"
                   name="telefone"
-                  placeholder="Telefone*"
+                  placeholder="Telefone* (99) 99999-9999"
                   value={formData.telefone}
                   onChange={handleChange}
-                  required
-                  pattern="[0-9]{10,11}"
+                  className={errors.telefone ? "error" : ""}
+                  maxLength={16}
                 />
+                {errors.telefone && (
+                  <span className="error-message">{errors.telefone}</span>
+                )}
               </div>
               <div className="form-group">
                 <select
                   name="servico"
                   value={formData.servico}
                   onChange={handleChange}
-                  required
+                  className={errors.servico ? "error" : ""}
                 >
                   <option value="">Selecione o serviço*</option>
                   <option value="site-pessoal">Site Pessoal</option>
@@ -233,6 +351,9 @@ const Footer: React.FC = () => {
                   <option value="sistema-web">Sistema Web</option>
                   <option value="dashboard-powerbi">Dashboard Power BI</option>
                 </select>
+                {errors.servico && (
+                  <span className="error-message">{errors.servico}</span>
+                )}
               </div>
               <div className="form-group">
                 <textarea
@@ -240,8 +361,11 @@ const Footer: React.FC = () => {
                   placeholder="Mensagem*"
                   value={formData.mensagem}
                   onChange={handleChange}
-                  required
+                  className={errors.mensagem ? "error" : ""}
                 ></textarea>
+                {errors.mensagem && (
+                  <span className="error-message">{errors.mensagem}</span>
+                )}
               </div>
               {message.text && (
                 <div className={`message ${message.type}`}>{message.text}</div>
